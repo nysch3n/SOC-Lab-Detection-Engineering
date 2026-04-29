@@ -72,6 +72,9 @@ The core data pipeline is designed to forward endpoint activity to the SIEM in n
     ```bash
     crackmapexec smb <WIN10_IP> -u jkowalski -p /usr/share/wordlists/fasttrack.txt
     ```
+<img width="2557" height="1242" alt="Zrzut ekranu 2026-04-29 011802" src="https://github.com/user-attachments/assets/14b7d8eb-d6b8-4dc9-8c39-033631841d1f" />
+
+    
 * **Detection Engineering (Overcoming Localization Issues):** During the analysis of **Event ID 4625 (Logon Failure)**, a critical real-world engineering challenge was encountered. The target Windows OS was localized in Polish. Consequently, standard Splunk parsers failed to extract fields like `TargetUserName` or `IpAddress`. 
     
     *The solution:* Analyzing the raw XML logs revealed the localized field names, which were then used to build the final detection query:
