@@ -22,83 +22,25 @@ The lab is distributed across two high-performance physical machines, isolating 
 | **WIN10-CLIENT** | Windows 10 Pro | Domain-joined Workstation | Sysmon (SwiftOnSecurity), Splunk UF |
 | **Kali-Attacker** | Kali Linux (ARM64) | Red Team Operations / Attack Origin | Nmap, NetExec, Hydra, Metasploit |
 
-## 🛠️ Technologies & Tools
+## 📂 Repository Structure
 
-* **Log Management & SIEM:** Splunk Enterprise, Splunk Universal Forwarder
-* **Endpoint Telemetry:** Microsoft Sysmon (System Monitor) with SwiftOnSecurity configuration
-* **Operating Systems:** Windows Server 2022 (AD DS), Windows 10, Ubuntu Linux, Kali Linux
-* **Offensive Security:** Nmap, NetExec (CrackMapExec), Hydra
-* **Networking:** Bridged internal networks, Windows Defender Firewall (managed via GPO/CMD for testing)
+This repository is divided into distinct operational phases:
 
----
-
-## ⚙️ Installation & Setup (Data Pipeline)
-
-The core data pipeline is designed to forward endpoint activity to the SIEM in near real-time.
-
-1.  **Sysmon Deployment:** Installed on both Windows endpoints using a tuned configuration to reduce noise while capturing critical process creations, network connections, and file modifications.
-2.  **Splunk Universal Forwarder (UF):** Configured to monitor local Event Logs (Security, System, Application, Directory Services).
-3.  **Manual Input Configuration:** Sysmon logs were manually routed to the UF by editing the `inputs.conf` file:
-    ```ini
-    [WinEventLog://Microsoft-Windows-Sysmon/Operational]
-    disabled = false
-    renderXml = true
-    
-    [WinEventLog://Security]
-    disabled = false
-    ```
-4.  **Parsing & Normalization:** Splunk Add-on for Microsoft Windows and Sysmon were installed on the Ubuntu Search Head to parse XML logs into actionable fields.
-
----
-
-## ⚔️ Attack & Detection Scenarios
-
-### Scenario 1: Network Reconnaissance (Stealth Scan)
-* **Objective:** Identify active hosts and open ports on the target workstation.
-* **Attack Vector:** Aggressive Nmap scan executed from the Kali MacBook.
-    ```bash
-    sudo nmap -sC -sV -A <WIN10_IP>
-    ```
-* **Detection (Splunk):** Leveraging Sysmon Event ID 3 (Network Connection) to detect abnormal spikes in port scanning activity from a single source.
-    ```spl
-    index=main source="*Sysmon*" EventCode=3 host="WIN10-CLIENT"
-    | stats count by SourceIp, DestinationPort 
-    | sort - count
-    ```
-
-### Scenario 2: SMB Brute-Force Attack
-* **Objective:** Gain unauthorized access to a domain user account (`jkowalski`) via SMB.
-* **Attack Vector:** Dictionary attack using NetExec / Hydra.
-    ```bash
-    crackmapexec smb <WIN10_IP> -u jkowalski -p /usr/share/wordlists/fasttrack.txt
-    ```
-<img width="1336" height="855" alt="Untitled" src="https://github.com/user-attachments/assets/21a3bd34-1b76-45ce-a190-9a80f02acfc6" />
-
-    
-* **Detection Engineering (Overcoming Localization Issues):** During the analysis of **Event ID 4625 (Logon Failure)**, a critical real-world engineering challenge was encountered. The target Windows OS was localized in Polish. Consequently, standard Splunk parsers failed to extract fields like `TargetUserName` or `IpAddress`. 
-    
-    *The solution:* Analyzing the raw XML logs revealed the localized field names, which were then used to build the final detection query:
-    ```spl
-    index=main EventCode=4625
-    | stats count by Nazwa_konta, "Adres źródłowy sieci", ComputerName
-    | sort - count
-    ```
-<img width="2557" height="1242" alt="Zrzut ekranu 2026-04-29 011802" src="https://github.com/user-attachments/assets/14b7d8eb-d6b8-4dc9-8c39-033631841d1f" />
-    *Result:* Successfully identified the attacker's IP (`192.168.10.22`) and the compromised account with over 250 failed attempts in a matter of seconds.
-
----
+* 📁 **[Infrastructure/](./Infrastructure)** - Deployment scripts, agent configurations, and data pipeline setup.
+* 📁 **[Offensive/](./Offensive)** - Attack playbooks, payload generation, and execution logs.
+* 📁 **[Defensive/](./Defensive)** - Threat hunting SPL queries, blind spot analysis, and detection logic.
 
 ## 🚀 Future Roadmap & Next Steps
 
 This lab is a living project. Upcoming scenarios include:
 
 - [x] Initial Infrastructure Setup & Data Pipeline
-- [x] Nmap Recon & Sysmon Network Detetion
-- [x] SMB Brute Force Detection
-- [ ] Automated Alerting (Creating Dashboards for Logon Anomalies)
+- [x] Network Recon & Documentation of Detection Blind Spots
+- [x] SMB Brute Force Execution & Detection (Overcoming Localization Issues)
 - [ ] Pass-the-Hash (PtH) attacks and Event ID 4624 (Logon Type 9) analysis
-- [ ] Advanced Lateral Movement using C2 Frameworks (e.g., HexStrike) and detecting Process Injection (Sysmon Event ID 10)
-- [ ] Implementing Sigma Rules
+- [ ] Advanced Lateral Movement using C2 Frameworks (e.g., HexStrike) 
+- [ ] Detecting Process Injection (Sysmon Event ID 10)
+- [ ] Implementing automated alerts and Sigma Rules
 
 ---
 *Disclaimer: This environment is completely isolated and built solely for educational purposes and detection engineering research.*
