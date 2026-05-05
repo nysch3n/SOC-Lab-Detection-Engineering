@@ -37,9 +37,10 @@ This lab is a living project. Upcoming scenarios include:
 - [x] Initial Infrastructure Setup & Data Pipeline
 - [x] Network Recon & Documentation of Detection Blind Spots
 - [x] SMB Brute Force Execution & Detection (Overcoming Localization Issues)
+- [x] Advanced Lateral Movement using Impacket (WMIexec) 
+- [ ] Credential Dumping & LSASS Memory Access (Sysmon Event ID 10)
 - [ ] Pass-the-Hash (PtH) attacks and Event ID 4624 (Logon Type 9) analysis
-- [ ] Advanced Lateral Movement using C2 Frameworks (e.g., HexStrike) 
-- [ ] Detecting Process Injection (Sysmon Event ID 10)
+- [ ] Advanced Lateral Movement using C2 Frameworks (e.g., Sliver/HexStrike) 
 - [ ] Implementing automated alerts and Sigma Rules
 
 ---
