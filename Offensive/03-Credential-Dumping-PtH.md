@@ -35,4 +35,8 @@
 
 ## 📸 Attacker Perspective (Kali Linux Evidence)
 
-![Pass-the-Hash Evidence](https://github.com/user-attachments/assets/8b8db2c3-c84f-4675-a02)
+<img width="829" height="406" alt="hash-admin-pass" src="https://github.com/user-attachments/assets/245cb82d-850c-43f4-9fce-9543a92157cc" />
+
+
+---
+'''
