@@ -1,5 +1,8 @@
 # 🛡️ SOC & Detection Engineering Home Lab
 
+![SOC Lab Physical Setup](<img width="2048" height="1536" alt="lab" src="https://github.com/user-attachments/assets/b997d9d0-892e-482d-af6e-71e80c0562da" />
+)
+
 A comprehensive, custom-built Active Directory environment designed to simulate real-world cyber attacks and engineer robust detection rules. This project bridges the gap between offensive operations (Red Teaming) and defensive monitoring (Blue Teaming/SOC) using industry-standard tools like Splunk, Sysmon, and Kali Linux.
 
 ## 🏗️ Architecture & Infrastructure
