@@ -57,8 +57,6 @@ The logs captured by Splunk clearly show attacker activity executed via WMI:
 
 ## 5. 📸 Detection Evidence (Splunk)
 
-> 📌 Add your screenshot below:
-
 <img width="2553" height="1237" alt="image" src="https://github.com/user-attachments/assets/a45c6ddd-fe12-40eb-ae67-7cb4d634d0c9" />
 
 
