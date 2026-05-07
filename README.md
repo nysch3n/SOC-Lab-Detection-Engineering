@@ -45,5 +45,8 @@ This lab is a living project. Upcoming scenarios include:
 - [x] Advanced Lateral Movement using C2 Frameworks (e.g., Sliver) 
 - [x] Implementing automated alerts and Sigma Rules
 
+<img width="2048" height="1536" alt="screens-sliver" src="https://github.com/user-attachments/assets/a0159fa5-90c7-46af-863c-3c946ae15483" />
+
+
 ---
 *Disclaimer: This environment is completely isolated and built solely for educational purposes and detection engineering research.*
