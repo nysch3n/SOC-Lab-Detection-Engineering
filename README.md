@@ -42,8 +42,8 @@ This lab is a living project. Upcoming scenarios include:
 - [x] Advanced Lateral Movement using Impacket (WMIexec) 
 - [x] Credential Dumping (SAM/LSA) & Defender Evasion Analysis
 - [x] Pass-the-Hash (PtH) attacks and Event ID 4624 (Logon Type 3 vs Type 9) analysis
-- [ ] Advanced Lateral Movement using C2 Frameworks (e.g., Sliver/HexStrike) 
-- [ ] Implementing automated alerts and Sigma Rules
+- [x] Advanced Lateral Movement using C2 Frameworks (e.g., Sliver) 
+- [x] Implementing automated alerts and Sigma Rules
 
 ---
 *Disclaimer: This environment is completely isolated and built solely for educational purposes and detection engineering research.*
