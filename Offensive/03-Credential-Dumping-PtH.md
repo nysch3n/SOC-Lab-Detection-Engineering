@@ -1,4 +1,3 @@
-'''
 # ⚔️ Attack Scenario 03: Credential Dumping & Pass-the-Hash (PtH)
 
 ## Phase 1: Credential Access (Dumping SAM/LSA)
@@ -33,10 +32,9 @@
 
 ---
 
-## 📸 Attacker Perspective (Kali Linux Evidence)
+## Attacker Perspective (Kali Linux Evidence)
 
 <img width="829" height="406" alt="hash-admin-pass" src="https://github.com/user-attachments/assets/245cb82d-850c-43f4-9fce-9543a92157cc" />
 
 
 ---
-'''
