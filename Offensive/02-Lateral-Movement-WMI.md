@@ -20,7 +20,7 @@ Successfully obtained a semi-interactive shell. Executed discovery commands:
 * `net user`
 
 ---
-### 📸 Screenshot: Kali Linux Evidence
+### Screenshot: Kali Linux Evidence
 <img width="726" height="353" alt="kali-wmi" src="https://github.com/user-attachments/assets/7b26c943-bfee-444d-9c1b-471dd5a57527" />
 
 ---
