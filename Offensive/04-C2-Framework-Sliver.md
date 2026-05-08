@@ -18,5 +18,5 @@ sliver > use [SESSION_ID]
 sliver (SESSION_NAME) > info
 ```
 
-### 📸 Attacker Perspective (Sliver Session & Host Recon)
+### Attacker Perspective (Sliver Session & Host Recon)
 <img width="1040" height="775" alt="sliver-console-c2" src="https://github.com/user-attachments/assets/17197351-2675-4397-a7dd-7b9ae032a5e0" />
