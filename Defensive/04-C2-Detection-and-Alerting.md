@@ -15,7 +15,7 @@ index=main source="*Sysmon*" EventCode=3 DestinationIp="192.168.10.28"
 | sort - _time
 ```
 
-### 📸 Threat Hunt Evidence
+### Threat Hunt Evidence
 
 <img width="2525" height="1227" alt="splunk-c2-hunt" src="https://github.com/user-attachments/assets/41afa1f2-9eb6-4516-b93a-dabf2c45f46f" />
 
@@ -32,7 +32,7 @@ To transition from manual hunting to automated detection, a scheduled alert was 
 * **Action:** Add to Triggered Alerts
 * **Severity:** High / Critical
 
-### 📸 Detection Rule Deployment
+### Detection Rule Deployment
 
 <img width="2555" height="872" alt="splunk-c2-alert" src="https://github.com/user-attachments/assets/4099f8e0-80ec-45d5-891a-01f47d4ff4d9" />
 
