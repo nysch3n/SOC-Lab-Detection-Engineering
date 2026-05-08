@@ -34,6 +34,6 @@ Using the exact extracted fields, the following Splunk Search Processing Languag
 ### Creating a SOC Tier 1 Dashboard (Risk Scoring)
 To shift from raw logs to actionable intelligence, a custom Dashboard was created. Using Splunk's `eval` function, a dynamic **Risk Level** was assigned to IPs based on the volume of authentication failures. 
 
-* The Dashboard provides an immediate visual queue (`CRITICAL 🚨`, `HIGH 🔴`) for Tier 1 Analysts to begin triaging the event.
+* The Dashboard provides an immediate visual queue (`CRITICAL`, `HIGH`) for Tier 1 Analysts to begin triaging the event.
 
 <img width="2553" height="1237" alt="image" src="https://github.com/user-attachments/assets/c94c9378-6198-4736-afd8-e81d43580cfa" />
