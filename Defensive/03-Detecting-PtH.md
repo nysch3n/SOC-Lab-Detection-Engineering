@@ -22,5 +22,5 @@ index=main source="*Security*" EventCode=4624 "192.168.10.28" Administrator
 ```
 
 ---
-### 📸 Defender Perspective (Splunk Detection Evidence)
+### Defender Perspective (Splunk Detection Evidence)
 <img width="2552" height="1001" alt="image" src="https://github.com/user-attachments/assets/7ef877ad-fa39-4480-a08c-568a39865fa2" />
