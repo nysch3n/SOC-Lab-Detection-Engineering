@@ -4,14 +4,14 @@ This analysis focuses on detecting **fileless lateral movement** that bypasses t
 
 ---
 
-## 1. 🔍 Detection Gap
+## 1. Detection Gap
 
-### ❌ Traditional AV (e.g., Defender)
+### Traditional AV (e.g., Defender)
 - Failed to alert on the WMI connection  
 - No malicious file was written to disk  
 - Activity blended with legitimate Windows Management traffic  
 
-### ✅ EDR / SIEM Approach
+### EDR / SIEM Approach
 Detection is possible by monitoring:
 - **Process Lineage**
 - **Behavioral Anomalies**
@@ -19,7 +19,7 @@ Detection is possible by monitoring:
 
 ---
 
-## 2. 🧬 Detection Logic (Process Ancestry)
+## 2. Detection Logic (Process Ancestry)
 
 The `wmiexec` tradecraft produces a distinctive process tree:
 
@@ -31,7 +31,7 @@ The `wmiexec` tradecraft produces a distinctive process tree:
 
 ---
 
-## 3. 🕵️ Threat Hunting Query (Splunk SPL)
+## 3. Threat Hunting Query (Splunk SPL)
 
 ```spl
 index=main source="*Sysmon*" EventCode=1 ParentImage="*\\WmiPrvSE.exe" Image="*\\cmd.exe"
@@ -41,7 +41,7 @@ index=main source="*Sysmon*" EventCode=1 ParentImage="*\\WmiPrvSE.exe" Image="*\
 
 ---
 
-## 4. 📊 Analysis of Findings
+## 4. Analysis of Findings
 
 The logs captured by Splunk clearly show attacker activity executed via WMI:
 
@@ -51,36 +51,36 @@ The logs captured by Splunk clearly show attacker activity executed via WMI:
   - `whoami`
   - system discovery commands
 
-➡️ Even though AV remained silent, **process-level telemetry exposed the attack**
+Even though AV remained silent, **process-level telemetry exposed the attack**
 
 ---
 
-## 5. 📸 Detection Evidence (Splunk)
+## 5. Detection Evidence (Splunk)
 
 <img width="2553" height="1237" alt="image" src="https://github.com/user-attachments/assets/a45c6ddd-fe12-40eb-ae67-7cb4d634d0c9" />
 
 
 ---
 
-## 6. 💡 Engineering Takeaways
+## 6. Engineering Takeaways
 
 To improve detection and prevention:
 
-### 🔎 Detection
+### Detection
 - Monitor for:
   - `cmd.exe` spawned by `WmiPrvSE.exe`
   - `powershell.exe` spawned by `WmiPrvSE.exe`
 
-### 🔐 Access Control
+### Access Control
 - Restrict **remote WMI access** to authorized admin accounts only  
 
-### 🧑‍💻 Least Privilege
+### Least Privilege
 - Enforce least privilege policies  
 - Prevent accounts (e.g., `jkowalski`) from having unnecessary local admin rights  
 
 ---
 
-## ✅ Summary
+## Summary
 
 | Area        | Insight |
 |------------|--------|
