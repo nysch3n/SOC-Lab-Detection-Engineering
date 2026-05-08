@@ -4,7 +4,7 @@
 
 A comprehensive, custom-built Active Directory environment designed to simulate real-world cyber attacks and engineer robust detection rules. This project bridges the gap between offensive operations (Red Teaming) and defensive monitoring (Blue Teaming/SOC) using industry-standard tools like Splunk, Sysmon, and Kali Linux.
 
-## 🏗️ Architecture & Infrastructure
+##  Architecture & Infrastructure
 
 The lab is distributed across two high-performance physical machines, isolating the attack infrastructure from the target network.
 
@@ -24,7 +24,7 @@ The lab is distributed across two high-performance physical machines, isolating 
 | **WIN10-CLIENT** | Windows 10 Pro | Domain-joined Workstation | Sysmon (SwiftOnSecurity), Splunk UF |
 | **Kali-Attacker** | Kali Linux (ARM64) | Red Team Operations / Attack Origin | Nmap, NetExec, Hydra, Metasploit |
 
-## 📂 Repository Structure
+##  Repository Structure
 
 This repository is divided into distinct operational phases:
 
@@ -32,7 +32,7 @@ This repository is divided into distinct operational phases:
 * 📁 **[Offensive/](./Offensive)** - Attack playbooks, payload generation, and execution logs.
 * 📁 **[Defensive/](./Defensive)** - Threat hunting SPL queries, blind spot analysis, and detection logic.
 
-## 🚀 Future Roadmap & Next Steps
+##  Future Roadmap & Next Steps
 
 This lab is a living project. Upcoming scenarios include:
 
